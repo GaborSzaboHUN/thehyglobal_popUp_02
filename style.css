@@ -1,0 +1,272 @@
+:root {
+    --light-background: #f7f5f2;
+    --light-border-color: #5FE1D0;
+    --qode-main-color: #bfa37c;
+    --base-font-color: #0c1315;
+}
+
+body {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.hysociety-ads.auction {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: none;
+    box-sizing: border-box;
+
+    width: calc(100% - 120px);
+    max-width: 1200px;
+    height: calc(95svh - 60px);
+
+    margin: 20px auto;
+    padding: 40px 40px 20px;
+
+    opacity: 1;
+
+    background-color: var(--light-background);
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, .25);
+
+    transition: opacity .2s ease-in-out;
+
+    z-index: 100;
+}
+
+.hysociety-ads.auction.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ads-blur.active {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100svh;
+    display: block;
+
+    opacity: 1;
+
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, .5);
+
+    transition: opacity .2s ease-in-out;
+}
+
+.auction-media {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 1);
+}
+
+.auction-media::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(0, 0, 0, .25);
+    z-index: 1;
+}
+
+.auction-title-container {
+    position: absolute;
+    top: 20px;
+
+    width: calc(100% - 40px);
+
+    display: flex;
+    justify-content: center;
+
+    gap: 20px;
+
+    z-index: 1;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 3px;
+    background-color: var(--qode-main-color);
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    position: relative;
+    top: -5px;
+    -webkit-appearance: none;
+    width: 13px;
+    height: 13px;
+    margin-right: 10px;
+    background-color: var(--qode-main-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.horizontal-border {
+    width: 100%;
+    height: .5px;
+    margin-top: 8px;
+
+    background-color: var(--qode-main-color);
+}
+
+.auction-title {
+    margin: 0;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 5px;
+
+    white-space: nowrap;
+    line-height: 18px;
+    font-style: normal;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+}
+
+h2.auction-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    font-weight: 100;
+    letter-spacing: 3.5px;
+
+    margin-top: 10px;
+}
+
+.auction-title::before {
+    content: '';
+    width: ;
+}
+
+.auction-media video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 101%;
+    width: 101%;
+    object-fit: cover;
+}
+
+.ads-buttons-container {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.ads-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 180px;
+    padding: 20px 30px;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 3.5px;
+    font-style: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: box-shadow .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.ads-btn:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .1);
+}
+
+.ads-btn.close {
+    border: 1px solid var(--light-border-color);
+    color: var(--base-font-color);
+    background-color: transparent;
+
+}
+
+.ads-btn.visit {
+    background-color: var(--qode-main-color);
+    color: #ffffff;
+}
+
+.ads-btn.visit:hover {
+    background-color: #a58d6b;
+}
+
+/* - - - - - - RESPONSIVITY SETUP - - - - - - */
+
+@media screen and (max-width: 737px) {
+    .ads-buttons-container {
+        flex-wrap: wrap-reverse;
+        gap: 20px;
+    }
+
+    .ads-btn {
+        min-width: unset;
+        width: 100%;
+
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hysociety-ads.auction {
+        width: calc(100% - 60px);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .horizontal-border {
+        display: none;
+    }
+
+    .auction-title {
+        white-space: wrap;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hysociety-ads.auction {
+        width: calc(100% - 40px);
+
+        padding: 20px;
+    }
+}
